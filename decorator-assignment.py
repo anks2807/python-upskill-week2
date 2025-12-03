@@ -1,7 +1,7 @@
 import functools
 from datetime import datetime
 
-# calculate and print the time taken by a function to execute
+#calculate and print the time taken by a function to execute
 def audit_time(func):
     def wrapper():
         start_time = datetime.now()
@@ -73,3 +73,25 @@ def expensive_computation(x):
 
 print(expensive_computation(5))
 print(expensive_computation(5))
+
+
+# require_permission decorator to check user permissions
+def require_permission(func):
+    def wrapper(*args, **kwargs):
+        user = args[0]
+        if 'admin' in user.get('permissions', []):
+            return func(*args, **kwargs)
+        else:
+            print("Permission denied.")
+    return wrapper
+
+
+@require_permission
+def delete_user(actor, target):
+    print(f"User {target['name']} deleted by {actor['name']}")
+
+
+user1 = {'name': 'Alice', 'permissions': ['admin']}
+user2 = {'name': 'John', 'permissions': ['dev']}
+user3 = {'name': 'Kurt', 'permissions': ['test']}
+delete_user(user1, user3)
