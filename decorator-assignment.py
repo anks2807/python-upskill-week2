@@ -1,6 +1,7 @@
 import functools
 from datetime import datetime
 
+# calculate and print the time taken by a function to execute
 def audit_time(func):
     def wrapper():
         start_time = datetime.now()
@@ -23,6 +24,7 @@ def make_list():
 print(make_list())
 
 
+# retry decorator to retry a function a specified number of times
 def retry(max_retries):
     def decorator(func):
         @functools.wraps(func)
@@ -39,6 +41,7 @@ def may_fail(name):
 may_fail("Alice")
 
 
+# validate_positive decorator to ensure input is positive
 def validate_positive(func):
     def wrapper(x):
         if x < 0:
@@ -52,6 +55,8 @@ def square_root(x):
 
 print(square_root(10))
 
+
+# cache decorator to cache results of a function
 def cache(func):
     cached_results = {}
     def wrapper(x):
