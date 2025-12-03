@@ -1,56 +1,56 @@
 import functools
-# from datetime import datetime
-#
-# def audit_time(func):
-#     def wrapper():
-#         start_time = datetime.now()
-#         print(f"start time: {start_time}")
-#         result = func()
-#         end_time = datetime.now()
-#         print(f"end time: {end_time}")
-#         duration = end_time - start_time
-#         print(f"Function '{func.__name__}' executed in: {duration.total_seconds()} seconds")
-#         return result
-#     return wrapper
-#
-# @audit_time
-# def make_list():
-#     list = [];
-#     for i in range(1, 1001):
-#         list.append(i)
-#     return list
-#
-# print(make_list())
+from datetime import datetime
+
+def audit_time(func):
+    def wrapper():
+        start_time = datetime.now()
+        print(f"start time: {start_time}")
+        result = func()
+        end_time = datetime.now()
+        print(f"end time: {end_time}")
+        duration = end_time - start_time
+        print(f"Function '{func.__name__}' executed in: {duration.total_seconds()} seconds")
+        return result
+    return wrapper
+
+@audit_time
+def make_list():
+    list = [];
+    for i in range(1, 1001):
+        list.append(i)
+    return list
+
+print(make_list())
 
 
-# def retry(max_retries):
-#     def decorator(func):
-#         @functools.wraps(func)
-#         def wrapper(*args, **kwargs):
-#             for attempt in range(max_retries):
-#                 func(*args, **kwargs)
-#         return wrapper
-#     return decorator
-#
-# @retry(3)
-# def may_fail(name):
-#     print(f"Hello, {name}!")
-#
-# may_fail("Alice")
+def retry(max_retries):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            for attempt in range(max_retries):
+                func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+@retry(3)
+def may_fail(name):
+    print(f"Hello, {name}!")
+
+may_fail("Alice")
 
 
-# def validate_positive(func):
-#     def wrapper(x):
-#         if x < 0:
-#             raise ValueError("Input must be a positive number.")
-#         return func(x)
-#     return wrapper
-#
-# @validate_positive
-# def square_root(x):
-#     return x ** 0.5
-#
-# print(square_root(10))
+def validate_positive(func):
+    def wrapper(x):
+        if x < 0:
+            raise ValueError("Input must be a positive number.")
+        return func(x)
+    return wrapper
+
+@validate_positive
+def square_root(x):
+    return x ** 0.5
+
+print(square_root(10))
 
 def cache(func):
     cached_results = {}
