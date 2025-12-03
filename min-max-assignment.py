@@ -7,7 +7,7 @@ print(min(setn))
 print(max(setn))
 
 def tuple_of_word_by_length(words):
-    output = min(words, key=len), max(words, key=len);
+    output = (min(words, key=len), max(words, key=len))
     return output
 
 words = ["apple", "banana", "kiwi", "grapefruit", "orange"]
