@@ -1,0 +1,5 @@
+this is the file read
+learning python is fun
+python is a cool programming language
+let's write some code
+have a great day!
