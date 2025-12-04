@@ -78,4 +78,4 @@ class C(A, B):
 
 c = C()
 print(c.greet_a())
-print(c.greet_b())# Should print "Hello from A" due to method resolution order
+print(c.greet_b())
