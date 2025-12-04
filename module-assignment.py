@@ -25,7 +25,7 @@ print(yesterday)
 print(tday)
 print(tomorrow)
 
-
+# Convert the date "March 22, 2020 10:00AM" to the format "2020-03-22 10:00:00" and then add 1 week and 12 hours to it
 date_str = "March 22, 2020 10:00AM"
 date_obj = dt.datetime.strptime(date_str, "%B %d, %Y %I:%M%p")
 formatted_date = date_obj.strftime("%Y-%m-%d %H:%M:%S")
